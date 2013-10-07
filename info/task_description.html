@@ -1,39 +1,41 @@
 <p>
-    <i>( Describe task in general )</i>
+    Our robots are constantly building their skills in linguistics.
+    For this they are researching the latin alphabet.
 </p>
 
 <p>
-    Sum two passed ints
-</p>
-
-<p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
+    The alphabet contains vowel and consonant letters (Yes, we divide the letters).<br>
+    The vowels -- <strong>A E I O U Y</strong><br>
+    The consonant -- <strong>B C D F G H J K L M N P Q R S T V W X Y Z</strong>
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    You are given a text with different words. The words are separated by whitespaces and punctuation marks.
+    Numbers are not words. You should to count the words (striped words), where the vowels with consonants are alternated.
+    That is, in counted words can not be two consecutive vowels or consonants.
+    The words of a single letter are not striped -- don't count it. Case is not significant.
 </p>
 
+<p>
+    <strong>Input: </strong> A text. A string (unicode)
+</p>
+
+<p>
+    <strong>Output: </strong> A quantity of striped words. An integer.
+</p>
 
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
-    <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
-    </pre>
+    <pre class="brush: python">checkio("My name is ...") == 2
+checkio("Hello world") == 0
+checkio("A quantity of striped words.") == 1, "Only of"
+checkio("Dog,cat,mouse,bird.Human.") == 3</pre>
 </div>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    <i>(Here you can explain how it can be used in development and what is usage of this.)</i>
+    It can be useful for different linguistic researches.
 </p>
