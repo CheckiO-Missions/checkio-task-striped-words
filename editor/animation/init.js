@@ -83,18 +83,19 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             var text = "";
 
-            for (var i = 0; i < rightResult.length; i++) {
-                var l = rightResult[i];
-                if (vowels.indexOf(rightResult[i]) !== -1) {
+            for (var i = 0; i < checkioInput.length; i++) {
+                var l = checkioInput[i];
+                if (vowels.indexOf(l) !== -1) {
                     text += '<span class="vowel">' + l + '</span>';
                 }
-                else if (consonants.indexOf(rightResult[i]) !== -1){
+                else if (consonants.indexOf(l) !== -1){
                     text += '<span class="consonant">' + l + '</span>';
                 }
                 else {
                     text += l;
                 }
             }
+            $explanation.html(text);
 
 
             this_e.setAnimationHeight($content.height() + 60);
