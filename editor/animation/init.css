@@ -41,7 +41,8 @@
 
 .animation-content .call,
 .animation-content .answer,
-.animation-content .output{
+.animation-content .output,
+.animation-content .explanation{
     font-weight: bold;
     padding: 10px;
     border: 2px dotted #a9a9a9;
@@ -51,6 +52,18 @@
     letter-spacing: 0.7px;
     word-break: break-word;
     white-space: pre-wrap;
+}
+
+.animation-content .explanation {
+    color: #737370;
+}
+
+.animation-content .explanation span.vowel {
+    color: #FABA00;
+}
+
+.animation-content .explanation span.consonant {
+    color: #294270;
 }
 
 .animation-content .error{

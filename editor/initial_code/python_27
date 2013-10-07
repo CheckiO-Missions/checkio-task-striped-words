@@ -1,3 +1,7 @@
+VOWELS = "AEIOUY"
+CONSONANTS = "BCDFGHJKLMNPQRSTVWXZ"
+
+
 def checkio(text):
 
     return 0

@@ -77,13 +77,24 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             }
             //Dont change the code before it
 
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
+            var $explanation = $content.find(".explanation");
+            var vowels = "aeiouyAEIOUY";
+            var consonants = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"
+
+            var text = "";
+
+            for (var i = 0; i < rightResult.length; i++) {
+                var l = rightResult[i];
+                if (vowels.indexOf(rightResult[i]) !== -1) {
+                    text += '<span class="vowel">' + l + '</span>';
+                }
+                else if (consonants.indexOf(rightResult[i]) !== -1){
+                    text += '<span class="consonant">' + l + '</span>';
+                }
+                else {
+                    text += l;
+                }
+            }
 
 
             this_e.setAnimationHeight($content.height() + 60);
@@ -108,10 +119,6 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
         var colorGrey1 = "#EBEDED";
 
         var colorWhite = "#FFFFFF";
-        //Your Additional functions or objects inside scope
-        //
-        //
-        //
 
 
     }
