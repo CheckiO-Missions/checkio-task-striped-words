@@ -1,0 +1,50 @@
+<p>
+    Nossos robôs estão sempre trabalhando para melhorar suas habilidades linguísticas.
+    Para esta missão, eles estão pesquisando o alfabeto latim e suas aplicações.
+</p>
+
+<p>
+    O alfabeto contém tanto vogais como consoantes (sim, nós dividimos as letras).<br>
+    Vogais -- <strong>A E I O U Y</strong><br>
+    Consoantes -- <strong>B C D F G H J K L M N P Q R S T V W X Z</strong>
+</p>
+
+<p>
+	Será fornecido a você um bloco de texto com palavras diferentes.
+    Essas palavras estão separadas por espaços em branco e diferentes pontuações.
+    Números não são considerados palavras nessa missão (uma mistura de letras e dígitos também não formam uma palavra).
+	Você deve contar o número de palavras (palavras listradas) nas quais as vogais e consoantes se alternam,
+    ou seja: as palavras que você contar não podem ter duas vogais ou consoantes consecutivas.
+	As palavras formadas por apenas uma letra não são 'listradas' -- não conte essas. As letras serem maiúsculas ou minúsculas não é algo importante para essa missão.
+</p>
+
+<p>
+    <strong>Entrada: </strong> Um texto como uma string. (unicode)
+</p>
+
+<p>
+    <strong>Saída: </strong> A quantidade de palavras 'listradas' na forma de um inteiro (int).
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Exemplo:</strong>
+    </p>
+    <pre class="brush: python">checkio("My name is ...") == 3
+checkio("Hello world") == 0
+checkio("A quantity of striped words.") == 1, "Only of"
+checkio("Dog,cat,mouse,bird.Human.") == 3</pre>
+</div>
+
+<p class="for_info_only">
+    <strong>Como é utilizado: </strong>
+	A idéia nessa tarefa é um exercício útil para pesquisa e análise linguística.
+	O processamento de texto é uma das principais ferramentas utilizadas na análise de vários livros e linguagens, além disso pode ajudar a traduzir um texto impresso para o formato digital.
+</p>
+
+
+<p>
+    <strong>Condições prévias:</strong>O texto contém apenas símbolos no padrão ASCII.<br>
+    0 < |text| < 10<sup>5</sup>
+</p>
