@@ -1,0 +1,51 @@
+<p>
+    A Robotjaink sohasem mulasztják el a saját nyelvi készségeik tökéletesítését. Ezúttal most az 
+    angol ábécét tanulmányozzák és azt, hogy mit is kezdjenek vele.
+</p>
+
+<p>
+    Az ábécé magán- és mássalhangzókra van osztva (valóban, mi a betűket választottuk szét és nem a hangokat).<br>
+    A magánhangzók -- <strong>A E I O U Y</strong><br>
+    A mássalhangzók -- <strong>B C D F G H J K L M N P Q R S T V W X Z</strong>
+</p>
+
+<p>
+    Adott egy különböző betűkből és/vagy számjegyekből álló szöveg, amelyek szóközökkel 
+    és írásjelekkel vannak egymástól elválasztva. A számjegyek nem tekinthetők szavaknak 
+    (csakúgy, mint a vegyesen betűkből és számjegyekből álló képződmények). Meg kell 
+    határozni mindazon szavak számát, amelyekben a magánhangzók váltakoznak a mássalhangzókkal 
+    (a sávos szavakat), vagyis az ilyen szavakban nem következik egymás után két mássalhangzó 
+    vagy két magánhangzó. Az egy betűből álló szavak nem tekinthetők „sávos” szavaknak (nem is 
+    kell azokat megszámolni). A kis- és nagybetűket nem kell megkülönböztetni.
+</p>
+
+<p>
+    <strong>Bemeneti adatok: </strong> Egy szöveg szöveges adattípusként (str).
+</p>
+
+<p>
+    <strong>Kimeneti adatok: </strong> A „sávos” szavak száma egész számként (int).
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Példák:</strong>
+    </p>
+    <pre class="brush: python">checkio("My name is ...") == 3
+checkio("Hello world") == 0
+checkio("A quantity of striped words.") == 1, "Only of"
+checkio("Dog,cat,mouse,bird.Human.") == 3</pre>
+</div>
+
+<p class="for_info_only">
+    <strong>Alkalmazása: </strong>
+    E feladatban alkalmazott alapelvek hasznosak lehetnek a nyelvi elemzés gyakorlása 
+    során. A szövegfeldolgozás – nagyon fontos eszköze a könyvek és nyelvek elemzésének.
+</p>
+
+
+<p>
+    <strong>Előfeltételek:</strong>Egy szöveg, amely csak ASCII karakterekből áll.<br>
+    0 &lt; len(text) &lt; 10<sup>5</sup>
+</p>
