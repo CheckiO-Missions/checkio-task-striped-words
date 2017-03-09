@@ -1,0 +1,15 @@
+"use strict";
+
+function stripedWords(text){
+    return 0;
+}
+
+var assert = require('assert');
+
+if (!global.is_checking) {
+    assert.equal(stripedWords("My name is ..."), 3, "All words are striped");
+    assert.equal(stripedWords("Hello world"), 0, "No one");
+    assert.equal(stripedWords("A quantity of striped words."), 1, "Only of");
+    assert.equal(stripedWords("Dog,cat,mouse,bird.Human."), 3, "Dog, cat and human");
+    console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
+}
