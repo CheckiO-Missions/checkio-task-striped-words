@@ -32,15 +32,17 @@
         <strong>Примеры:</strong>
     </p>
     {% if interpreter.slug == "js-node" %}
-<pre class="brush: python">stripedWords("My name is ...") == 3
-stripedWords("Hello world") == 0
-stripedWords("A quantity of striped words.") == 1, "Only of"
-stripedWords("Dog,cat,mouse,bird.Human.") == 3</pre>
+<pre class="brush: javascript">stripedWords('My name is ...') == 3
+stripedWords('Hello world') == 0
+stripedWords('A quantity of striped words.') == 1
+stripedWords('Dog,cat,mouse,bird.Human.') == 3
+</pre>
 {% else %}
-<pre class="brush: python">checkio("My name is ...") == 3
-checkio("Hello world") == 0
-checkio("A quantity of striped words.") == 1, "Only of"
-checkio("Dog,cat,mouse,bird.Human.") == 3</pre>
+<pre class="brush: python">checkio('My name is ...') == 3
+checkio('Hello world') == 0
+checkio('A quantity of striped words.') == 1
+checkio('Dog,cat,mouse,bird.Human.') == 3
+</pre>
 {% endif %}
 
 </div>

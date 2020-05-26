@@ -1,15 +1,18 @@
-"use strict";
+import assert from "assert";
 
-function stripedWords(text){
-    return 0;
+function stripedWords(line: string) -> string {
+    // your code here
+    return line;
 }
 
-var assert = require('assert');
+console.log('Example:');
+console.log(stripedWords('My name is ...'));
 
-if (!global.is_checking) {
-    assert.equal(stripedWords("My name is ..."), 3, "All words are striped");
-    assert.equal(stripedWords("Hello world"), 0, "No one");
-    assert.equal(stripedWords("A quantity of striped words."), 1, "Only of");
-    assert.equal(stripedWords("Dog,cat,mouse,bird.Human."), 3, "Dog, cat and human");
-    console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
-}
+// These "asserts" are used for self-checking
+assert.equal(stripedWords('My name is ...'), 3);
+assert.equal(stripedWords('Hello world'), 0);
+assert.equal(stripedWords('A quantity of striped words.'), 1);
+assert.equal(stripedWords('Dog,cat,mouse,bird.Human.'), 3);
+
+console.log("Coding complete? Click 'Check' to earn cool rewards!");
+    

@@ -1,14 +1,15 @@
-VOWELS = "AEIOUY"
-CONSONANTS = "BCDFGHJKLMNPQRSTVWXZ"
+def checkio(line: str) -> str:
+    # your code here
+    return ''
 
 
-def checkio(text):
-
-    return 0
-
-#These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
-    assert checkio("My name is ...") == 3, "All words are striped"
-    assert checkio("Hello world") == 0, "No one"
-    assert checkio("A quantity of striped words.") == 1, "Only of"
-    assert checkio("Dog,cat,mouse,bird.Human.") == 3, "Dog, cat and human"
+    print("Example:")
+    print(checkio('My name is ...'))
+
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert checkio('My name is ...') == 3
+    assert checkio('Hello world') == 0
+    assert checkio('A quantity of striped words.') == 1
+    assert checkio('Dog,cat,mouse,bird.Human.') == 3
+    print("Coding complete? Click 'Check' to earn cool rewards!")
