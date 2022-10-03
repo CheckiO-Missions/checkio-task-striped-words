@@ -1,6 +1,6 @@
-def checkio(line: str) -> str:
+def checkio(line: str) -> int:
     # your code here
-    return ''
+    return 0
 
 
 if __name__ == '__main__':
