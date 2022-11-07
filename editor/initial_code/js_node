@@ -1,8 +1,8 @@
 import assert from "assert";
 
-function stripedWords(line: string) -> string {
+function stripedWords(line: string) -> number {
     // your code here
-    return line;
+    return 0;
 }
 
 console.log('Example:');
