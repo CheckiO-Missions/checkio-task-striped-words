@@ -1,3 +1,5 @@
+.vscode
+
 *.py[cod]
 
 # C extensions
@@ -33,4 +35,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-generate.py
+.idea
+
+.DS_Store
+__VERSION__.py
+
+__pycache__

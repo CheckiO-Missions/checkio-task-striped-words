@@ -19,38 +19,26 @@
 </p>
 
 <p>
-    <strong>Input: </strong> A text as a string (unicode)
+    <strong>Input:</strong> A text as a string (unicode)
 </p>
 
 <p>
-    <strong>Output: </strong> A quantity of striped words as an integer.
+    <strong>Output:</strong> A quantity of striped words as an integer.
 </p>
 
 
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">stripedWords('My name is ...') == 3
-stripedWords('Hello world') == 0
-stripedWords('A quantity of striped words.') == 1
-stripedWords('Dog,cat,mouse,bird.Human.') == 3
-</pre>
-{% else %}
-<pre class="brush: python">checkio('My name is ...') == 3
-checkio('Hello world') == 0
-checkio('A quantity of striped words.') == 1
-checkio('Dog,cat,mouse,bird.Human.') == 3
-</pre>
-{% endif %}
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
     
 </div>
 
 <p class="for_info_only">
-    <strong>How it is used: </strong>
+    <strong>How it is used:</strong>
     This task is a useful exercise for linguistic research and analysis.
     Text processing is one of the main tools used in the analysis of various books and languages and can help translate print text to a digital format.
 </p>

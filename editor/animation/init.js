@@ -1,12 +1,8 @@
-requirejs(['ext_editor_io', 'jquery_190', 'raphael_210'],
+requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
     function (extIO, $, TableComponent) {
         var io = new extIO({
-            functions: {
-                js: 'stripedWords',
-                python: 'checkio'
-            },
             animation: function($expl, data) {
-                var checkioInput = data.in;
+                var checkioInput = data.in[0];
                 if (!checkioInput){
                     return;
                 }
@@ -29,7 +25,6 @@ requirejs(['ext_editor_io', 'jquery_190', 'raphael_210'],
                 }
                 $expl.html(text);
             }
-
         });
         io.start();
     }
