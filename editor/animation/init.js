@@ -6,8 +6,8 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
                 if (!checkioInput){
                     return;
                 }
-                var vowels = "aeiouyAEIOUY";
-                var consonants = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"
+                const vowels = "aeiouyAEIOUY";
+                const consonants = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"
 
                 var text = "";
 

@@ -5,13 +5,13 @@
 
 <p>
     The alphabet contains both vowel and consonant letters (yes, we divide the letters).<br>
-    Vowels -- <strong>A E I O U Y</strong><br>
-    Consonants -- <strong>B C D F G H J K L M N P Q R S T V W X Z</strong>
+    Vowels -- <b>A E I O U Y</b><br>
+    Consonants -- <b>B C D F G H J K L M N P Q R S T V W X Z</b>
 </p>
 
-<p>
+<p style="text-align: justify;">
     You are given a block of text with different words. 
-    These words are separated by whitespaces and punctuation marks.
+    These words are separated by white spaces and punctuation marks.
     Numbers are not considered as words in this mission (a mix of letters and digits is not a word either).
     You should count the number of words (striped words) where the vowels with consonants are alternating; 
     words that you count cannot have two consecutive vowels or consonants.
@@ -19,11 +19,11 @@
 </p>
 
 <p>
-    <strong>Input:</strong> A text as a string (unicode)
+    <strong>Input:</strong> A text as a string <span translate="no">(str{% if is_js %}ing{% endif %})</span>.
 </p>
 
 <p>
-    <strong>Output:</strong> A quantity of striped words as an integer.
+    <strong>Output:</strong> A quantity of striped words as an integer <span translate="no">({% if is_js %}number{% else %}int{% endif %})</span>.
 </p>
 
 
@@ -45,6 +45,9 @@
 
 
 <p>
-    <strong>Precondition:</strong>The text contains only ASCII symbols.<br>
-    0 &lt; len(text) &lt; 10<sup>5</sup>
+    <strong>Preconditions:</strong>
+    <ul>
+        <li>The text contains only ASCII symbols;</li>
+        <li>0 &lt; len(text) &lt; 10<sup>5</sup>.</li>
+    </ul>
 </p>
