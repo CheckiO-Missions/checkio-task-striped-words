@@ -1,0 +1,53 @@
+<p>
+    我们的机器人一直在努力提高自己的语言能力。
+    为此，它们研究了拉丁字母及其应用。
+</p>
+
+<p>
+    字母表包含元音字母和辅音字母（是的，我们把字母分开了）。<br>
+    元音 --<b>A E I O U Y</b><br>
+    辅音字母<b>B C D F G H J K L M N P Q R S T V W X Z</b>
+</p>
+
+<p style="text-align: justify;">
+    给您一个包含不同单词的文本块。 
+    这些单词之间用空格和标点符号隔开。
+    在本任务中，数字不被视为单词（字母和数字的混合也不是单词）。
+    您应该计算元音和辅音交替出现的单词（条纹单词）的数量； 
+    您数出的单词不能有两个连续的元音或辅音。
+    由单个字母组成的单词不是条纹单词，因此不要计算这些单词。在本任务中，字母的大小写并不重要。
+</p>
+
+<p>
+   <strong>输入：</strong>文本字符串 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>输出：</strong>以整数表示的条带字数 <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>例子</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+    
+</div>
+
+<p class="for_info_only">
+   <strong>如何使用：</strong>
+    这项任务是语言学研究和分析的有用练习。
+    文本处理是用于分析各种书籍和语言的主要工具之一，可以帮助将印刷文本转换为数字格式。
+</p>
+
+
+<p>
+    <strong>前提条件</strong>
+    <ul>
+        <li>文本只包含 ASCII 符号；</li>
+        <li>0 &lt; len(text) &lt;<sup>105</sup>。</li>
+    </ul>
+</p>
