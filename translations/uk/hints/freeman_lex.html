@@ -1,0 +1,210 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я не уявляю, як почати вирішувати цю місію.
+    </div>
+    <div class="answer">
+        <p>
+            Лови ідею 💡! Приведіть заданий <b class="code">text</b> до одного регістру та розділіть його розділовими знаками. Перебирайте список, беручи тільки слова без цифр і довші за 1, відокремлюйте символи з непарними індексами від символів з парними індексами і перевіряйте їх наявність у голосних і приголосних.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Гаразд, з чого почати?
+    </div>
+    <div class="answer">
+        <p>
+            Давайте створимо набір усіх голосних і присвоїмо його змінній (для констант використовуйте верхній регістр). Оскільки тип <b>str</b> також є послідовністю, ви можете створити множину з нього. Також оголосіть змінну для зберігання кількості відповідних слів, з початковим значенням <b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+VOWELS = set("aeiouy")
+res = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Що робити далі?
+    </div>
+    <div class="answer">
+        <p>
+            Перетворіть заданий <b class="code">text</b> в один регістр, наприклад, за допомогою <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>. Потім за допомогою <b class="code">split()</b> стандартного модуля <a target="_blank" href="https://docs.python.org/3/library/re.html">re</a> розбийте одно регістровий текст на окремі слова за допомогою розділових знаків.
+        </p>
+        <pre class="brush: python">
+words = re.split(r"[.,!?: ]", text.lower())
+        </pre>
+        <p>
+            Не забудьте імпортувати модуль перед використанням <b class="code">split()</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Як обробляти перевірку кожного слова?
+    </div>
+    <div class="answer">
+        <p>
+            Спочатку перебираємо <b class="code">words</b> за допомогою циклу <b class="code">for</b>.
+        </p>
+        <pre class="brush: python">
+for word in words:
+    ...
+        </pre>
+        <p>
+            Згідно з описом, якщо слово містить цифру або має довжину 1, то воно не враховується. Для цієї перевірки вам знадобляться метод <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a>, функція <b class="code">len()</b> та інструкція <b class="code">if</b>.
+        </p>
+        <pre class="brush: python">
+if len(word) == 1 or not word.isalpha():
+    continue
+        </pre>
+        <p>
+            Якщо умова повертає <b class="code">True</b> - пропускаємо <b class="code">word</b> з <b class="code">continue</b> і перевіряємо наступну.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Як розділити символи з непарними та парними індексами?
+    </div>
+    <div class="answer">
+        <p>
+            Використовуйте рядок <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">slicing</a> з кроком 2 і правильним початковим індексом. Перетворіть обидва результати в <b class="code">set</b> і присвойте їх різним змінним. 
+        </p>
+        <pre class="brush: python">
+odd, even = set(word[::2]), set(word[1::2])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Так легко розділити! Але мені все ще потрібна підказка.
+    </div>
+    <div class="answer">
+        <p>
+            Це, власне, головна частина. Почитайте про методи <a target="_blank" href="https://www.w3schools.com/python/python_sets_methods.asp">sets</a>. Для розв'язання цієї задачі ми використовуємо <b class="code">issubset()</b> та <b class="code">isdisjoint()</b>, але також можна використати інший метод для розв'язання місії. 
+        </p>
+        <p>
+            Вам потрібно вказати два випадки: перевірити, чи всі символи <b class="code">odd</b> є голосними, і тоді всі <b class="code">even</b> повинні бути приголосними (НЕ голосними). Інший випадок - протилежний.
+        </p>
+        <pre class="brush: python">
+case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Як правильно працювати з регістрами?
+    </div>
+    <div class="answer">
+        <p>
+            Це дуже просто. Якщо той чи інший кейс повертає <b class="code">True</b>, це означає, що <b class="code">word</b> смугастий і ви повинні збільшити лічильник <b class="code">res</b>.
+        </p>
+        <pre class="brush: python">
+if case1 or case2:
+    res += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Отже, як має виглядати мій кінцевий розв'язок?
+    </div>
+    <div class="answer">
+        <p>
+            Вам просто потрібно об'єднати всі попередні підказки, повернути <b class="code">res</b> і обернути ваш код у вираз функції. Наполегливо рекомендуємо використовувати підказки типів для вхідних та вихідних даних.
+        </p>
+        <p>Ось і все рішення:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(text: str) -> int:
+
+    VOWELS = set("aeiouy")
+    res = 0
+    words = re.split(r"[.,!?: ]", text.lower())
+    for word in words:
+        if len(word) == 1 or not word.isalpha():
+            continue
+        odd, even = set(word[::2]), set(word[1::2])
+        case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+        case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        if case1 or case2:
+            res += 1
+            
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажіть мені більше рішень!<br />
+        тому що я хочу бути справжнім 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Звичайно, хапай!</p>
+        <p>
+            У цьому розв'язку символи всіх груп замінюються на один певний символ за одну ітерацію. Після цього потрібно лише перевірити, чи символи голосних та приголосних груп не є суміжними (крім перевірки, яку ви вже знаєте з нашого розв'язку).
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+VOWELS = "AEIOUY"
+PUNCTUATION = " ,.!?"
+DIGITS = "0123456789"
+
+def checkio(text: str) -> int:
+    
+    text1 = ""
+    for char in text.upper():
+        if char in PUNCTUATION: text1 += " "
+        elif char in VOWELS: text1 += "v"
+        elif char in DIGITS: text1 += char
+        else: text1 += "c"
+
+    count = sum(all((len(word)> 1,
+                     word.isalpha(),
+                     "cc" not in word,
+                     "vv" not in word))
+                for word in text1.split(" "))
+
+    return count
+        </pre>
+        </div>
+        <p>
+            Тут наведено загальне використання модуля <b class="code">re</b>, а розв'язок добре пояснюється.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+VOWELS = "AEIOUY"
+CONSONANTS = "BCDFGHJKLMNPQRSTVWXZ"
+
+def checkio(text: str) -> int:
+
+    return len(re.findall(r'''(?ix)               (?#Case-insensitive, verbose)
+        \b(                                       (?#Surrounding word boundaries)
+            (?:(?: [{cons}] [{vow}] )+ [{cons}]?) (?#Word starting with consonant)
+            |                                     (?#Alternative templates)
+            (?:(?: [{vow}] [{cons}] )+ [{vow}]?)  (?#Word starting with vowel)
+        )\b
+        '''.format(vow=VOWELS, cons=CONSONANTS), text))
+        </pre>
+        </div>
+        <p>Натисніть <b>Best Solutions</b> у меню завдання і побачите багато інших цікавих розв'язків!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює чудово!
+    </div>
+    <div class="answer">
+        Радий це чути 👍!
+    </div>
+</div>
+</body>
