@@ -1,0 +1,210 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住一个想法💡！将给定的<b class="code">text</b> 转换成一种情况，并用标点符号分割。迭代列表，只取不带数字且长度大于 1 的单词，将奇数索引上的字符与偶数索引上的字符分开，并检查它们是否存在于元音和辅音中。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从哪些方面入手？
+    </div>
+    <div class="answer">
+        <p>
+            让我们创建一个包含所有元音的集合，并将其赋值给一个变量（常量使用大写）。由于<b>str</b> 类型也是一个序列，您可以从中创建一个集合。同时声明一个变量，用于保存合适单词的数量，初始值为<b class="code">0</b> 。
+        </p>
+        <pre class="brush: python">
+VOWELS = set("aeiouy")
+res = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        下一步该做什么？
+    </div>
+    <div class="answer">
+        <p>
+            将给定的<b class="code">text</b> 转换成单字母大小写，例如使用<a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a> 。然后使用<b class="code">split()</b> 的标准模块<a target="_blank" href="https://docs.python.org/3/library/re.html">re</a> ，用标点符号将单字分割成单字。
+        </p>
+        <pre class="brush: python">
+words = re.split(r"[.,!?: ]", text.lower())
+        </pre>
+        <p>
+            在使用<b class="code">split()</b> 之前，不要忘记导入该模块。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何处理每个单词的检查？
+    </div>
+    <div class="answer">
+        <p>
+            首先，使用<b class="code">for</b> 循环遍历<b class="code">words</b> 。
+        </p>
+        <pre class="brush: python">
+for word in words:
+    ...
+        </pre>
+        <p>
+            根据说明，如果单词包含一个数字或长度为 1，则不计算在内。为此，需要使用<a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a> 方法、<b class="code">len()</b> 函数和<b class="code">if</b> 语句。
+        </p>
+        <pre class="brush: python">
+if len(word) == 1 or not word.isalpha():
+    continue
+        </pre>
+        <p>
+            如果条件返回<b class="code">True</b> - 则通过<b class="code">continue</b> 跳过<b class="code">word</b> ，检查下一个。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何分隔奇数和偶数索引的字符？
+    </div>
+    <div class="answer">
+        <p>
+            使用字符串<a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">slicing</a> ，步骤 2 和适当的起始索引。将两个结果都转换为<b class="code">set</b> ，并分配给不同的变量。 
+        </p>
+        <pre class="brush: python">
+odd, even = set(word[::2]), set(word[1::2])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        分离很容易！但我仍然需要一个提示。
+    </div>
+    <div class="answer">
+        <p>
+            这其实是最主要的部分。请阅读<a target="_blank" href="https://www.w3schools.com/python/python_sets_methods.asp">sets</a> 方法。在本解决方案中，我们使用了<b class="code">issubset()</b> 和<b class="code">isdisjoint()</b> ，但也可以使用其他方法来解决任务。 
+        </p>
+        <p>
+            您需要指定两种情况：检查所有<b class="code">odd</b> 字符是否都是元音，然后所有<b class="code">even</b> 必须是辅音（而非元音）。另一种情况正好相反。
+        </p>
+        <pre class="brush: python">
+case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何正确处理这两种情况？
+    </div>
+    <div class="answer">
+        <p>
+            很简单。如果一个或另一个情况返回<b class="code">True</b> ，则表示<b class="code">word</b> 已被剥离，必须递增计数器<b class="code">res</b> 。
+        </p>
+        <pre class="brush: python">
+if case1 or case2:
+    res += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            您只需将之前的所有提示连接起来，返回<b class="code">res</b> 并将代码封装为函数表达式。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(text: str) -> int:
+
+    VOWELS = set("aeiouy")
+    res = 0
+    words = re.split(r"[.,!?: ]", text.lower())
+    for word in words:
+        if len(word) == 1 or not word.isalpha():
+            continue
+        odd, even = set(word[::2]), set(word[1::2])
+        case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+        case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        if case1 or case2:
+            res += 1
+            
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        向我展示更多解决方案！<br />
+        因为我想成为一个真正的 🥇 Python Ninnjaa！
+    </div>
+    <div class="answer">
+        <p>当然，抓紧时间！</p>
+        <p>
+            在这个解决方案中，所有组中的字符都会在一次迭代中被一个特定字符替换。之后，您只需检查元音和辅音组的字符是否不相邻（除了检查之外，您已经从我们的解决方案中了解到了）。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+VOWELS = "AEIOUY"
+PUNCTUATION = " ,.!?"
+DIGITS = "0123456789"
+
+def checkio(text: str) -> int:
+    
+    text1 = ""
+    for char in text.upper():
+        if char in PUNCTUATION: text1 += " "
+        elif char in VOWELS: text1 += "v"
+        elif char in DIGITS: text1 += char
+        else: text1 += "c"
+
+    count = sum(all((len(word)> 1,
+                     word.isalpha(),
+                     "cc" not in word,
+                     "vv" not in word))
+                for word in text1.split(" "))
+
+    return count
+        </pre>
+        </div>
+        <p>
+            这里使用的是<b class="code">re</b> 模块的全部内容，而解决方案也很好地进行了自我解释。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+VOWELS = "AEIOUY"
+CONSONANTS = "BCDFGHJKLMNPQRSTVWXZ"
+
+def checkio(text: str) -> int:
+
+    return len(re.findall(r'''(?ix)               (?#Case-insensitive, verbose)
+        \b(                                       (?#Surrounding word boundaries)
+            (?:(?: [{cons}] [{vow}] )+ [{cons}]?) (?#Word starting with consonant)
+            |                                     (?#Alternative templates)
+            (?:(?: [{vow}] [{cons}] )+ [{vow}]?)  (?#Word starting with vowel)
+        )\b
+        '''.format(vow=VOWELS, cons=CONSONANTS), text))
+        </pre>
+        </div>
+        <p>点击任务菜单中的<b>Best Solutions</b> ，查看更多其他有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>
