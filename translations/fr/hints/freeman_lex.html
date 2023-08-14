@@ -1,0 +1,210 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            Attrapez une idée 💡! Convertissez le site <b class="code">text</b> en un seul cas et divisez-le par des signes de ponctuation. Itérer sur la liste en ne prenant que les mots sans chiffres et plus longs que 1, séparer les caractères sur les indices impairs de ceux sur les indices pairs et vérifier leur présence dans les voyelles et les consonnes.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Créons un ensemble de toutes les voyelles et assignons-le à une variable (utilisez les majuscules pour les constantes). Le type <b>str</b> étant également une séquence, vous pouvez créer un ensemble à partir de ce type. Déclarez également une variable pour conserver un certain nombre de mots appropriés, avec la valeur initiale de <b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+VOWELS = set("aeiouy")
+res = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire ensuite?
+    </div>
+    <div class="answer">
+        <p>
+            Convertissez le texte <b class="code">text</b> en une seule casse, par exemple avec <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>. Utilisez ensuite <b class="code">split()</b> du module standard <a target="_blank" href="https://docs.python.org/3/library/re.html">re</a> pour diviser le texte mono-cas en mots séparés par des signes de ponctuation.
+        </p>
+        <pre class="brush: python">
+words = re.split(r"[.,!?: ]", text.lower())
+        </pre>
+        <p>
+            N'oubliez pas d'importer le module avant d'utiliser <b class="code">split()</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment gérer la vérification de chaque mot?
+    </div>
+    <div class="answer">
+        <p>
+            Tout d'abord, parcourez <b class="code">words</b> à l'aide de la boucle <b class="code">for</b>.
+        </p>
+        <pre class="brush: python">
+for word in words:
+    ...
+        </pre>
+        <p>
+            D'après la description, si un mot comprend un chiffre ou a une longueur de 1, il n'est pas compté. Pour cette vérification, vous avez besoin de la méthode <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a>, de la fonction <b class="code">len()</b> et de l'instruction <b class="code">if</b>.
+        </p>
+        <pre class="brush: python">
+if len(word) == 1 or not word.isalpha():
+    continue
+        </pre>
+        <p>
+            Si la condition renvoie <b class="code">True</b> - ignorez le <b class="code">word</b> avec <b class="code">continue</b> et vérifiez le suivant.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment séparer les caractères avec des index pairs et impairs?
+    </div>
+    <div class="answer">
+        <p>
+            Utilisez la chaîne <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">slicing</a> avec l'étape 2 et un index de départ approprié. Convertissez les deux résultats en <b class="code">set</b> et affectez-les aux différentes variables. 
+        </p>
+        <pre class="brush: python">
+odd, even = set(word[::2]), set(word[1::2])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        La séparation est si facile! Mais j'ai encore besoin d'un indice.
+    </div>
+    <div class="answer">
+        <p>
+            C'est en fait la partie principale. Lisez les méthodes de <a target="_blank" href="https://www.w3schools.com/python/python_sets_methods.asp">sets</a>. Pour cette solution, nous utilisons <b class="code">issubset()</b> et <b class="code">isdisjoint()</b>, mais il est également possible d'utiliser d'autres méthodes pour résoudre la mission. 
+        </p>
+        <p>
+            Vous devez spécifier deux cas: vérifiez si tous les caractères de <b class="code">odd</b> sont des voyelles et si tous les caractères de <b class="code">even</b> doivent être des consonnes (PAS des voyelles). L'autre cas est l'inverse.
+        </p>
+        <pre class="brush: python">
+case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment traiter les deux cas correctement?
+    </div>
+    <div class="answer">
+        <p>
+            C'est très simple. Si l'un ou l'autre des cas renvoie <b class="code">True</b>, cela signifie que <b class="code">word</b> est rayé et que vous devez incrémenter le compteur <b class="code">res</b>.
+        </p>
+        <pre class="brush: python">
+if case1 or case2:
+    res += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit de joindre tous les indices précédents, de renvoyer <b class="code">res</b> et d'envelopper votre code dans une expression de fonction. Il est fortement recommandé d'utiliser des indications de type pour les données d'entrée et de sortie.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(text: str) -> int:
+
+    VOWELS = set("aeiouy")
+    res = 0
+    words = re.split(r"[.,!?: ]", text.lower())
+    for word in words:
+        if len(word) == 1 or not word.isalpha():
+            continue
+        odd, even = set(word[::2]), set(word[1::2])
+        case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+        case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        if case1 or case2:
+            res += 1
+            
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être une vraie 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            Dans cette solution, les caractères de tous les groupes sont remplacés par un caractère spécifique en une seule itération. Après cela, vous devez juste vérifier si les caractères des groupes de voyelles et de consonnes ne sont pas adjacents (en dehors de la vérification, vous le savez déjà grâce à notre solution).
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+VOWELS = "AEIOUY"
+PUNCTUATION = " ,.!?"
+DIGITS = "0123456789"
+
+def checkio(text: str) -> int:
+    
+    text1 = ""
+    for char in text.upper():
+        if char in PUNCTUATION: text1 += " "
+        elif char in VOWELS: text1 += "v"
+        elif char in DIGITS: text1 += char
+        else: text1 += "c"
+
+    count = sum(all((len(word)> 1,
+                     word.isalpha(),
+                     "cc" not in word,
+                     "vv" not in word))
+                for word in text1.split(" "))
+
+    return count
+        </pre>
+        </div>
+        <p>
+            Il s'agit ici d'une utilisation totale du module <b class="code">re</b> et la solution est bien expliquée.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+VOWELS = "AEIOUY"
+CONSONANTS = "BCDFGHJKLMNPQRSTVWXZ"
+
+def checkio(text: str) -> int:
+
+    return len(re.findall(r'''(?ix)               (?#Case-insensitive, verbose)
+        \b(                                       (?#Surrounding word boundaries)
+            (?:(?: [{cons}] [{vow}] )+ [{cons}]?) (?#Word starting with consonant)
+            |                                     (?#Alternative templates)
+            (?:(?: [{vow}] [{cons}] )+ [{vow}]?)  (?#Word starting with vowel)
+        )\b
+        '''.format(vow=VOWELS, cons=CONSONANTS), text))
+        </pre>
+        </div>
+        <p>Cliquez sur <b>Best Solutions</b> dans le menu mission et découvrez de nombreuses autres solutions intéressantes!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci beaucoup! Je sais et je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        Heureux de l'apprendre 👍!
+    </div>
+</div>
+</body>
