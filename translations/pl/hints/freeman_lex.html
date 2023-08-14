@@ -1,0 +1,210 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę złapać jakiś pomysł 💡! Proszę przekonwertować podane <b class="code">text</b> na jeden przypadek i podzielić go znakami interpunkcyjnymi. Iterować po liście, biorąc tylko słowa bez cyfr i dłuższe niż 1, oddzielić znaki na nieparzystych indeksach od tych na parzystych i sprawdzić ich obecność w samogłoskach i spółgłoskach.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Utwórzmy zbiór wszystkich samogłosek i przypiszmy go do zmiennej (proszę używać wielkich liter dla stałych). Ponieważ typ <b>str</b> jest również sekwencją, można utworzyć z niego zbiór. Proszę również zadeklarować zmienną do przechowywania liczby odpowiednich słów, z wartością początkową <b class="code">0</b>.
+        </p>
+        <pre class="brush: python">
+VOWELS = set("aeiouy")
+res = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co robić dalej?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę przekonwertować podane <b class="code">text</b> na jedną wielkość liter, na przykład za pomocą <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>. Następnie proszę użyć <b class="code">split()</b> ze standardowego modułu <a target="_blank" href="https://docs.python.org/3/library/re.html">re</a>, aby rozdzielić tekst pisany jedną literą na osobne słowa za pomocą znaków interpunkcyjnych.
+        </p>
+        <pre class="brush: python">
+words = re.split(r"[.,!?: ]", text.lower())
+        </pre>
+        <p>
+            Proszę nie zapomnieć zaimportować modułu przed użyciem <b class="code">split()</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak obsługiwać sprawdzanie każdego słowa?
+    </div>
+    <div class="answer">
+        <p>
+            Najpierw proszę iterować po <b class="code">words</b> używając pętli <b class="code">for</b>.
+        </p>
+        <pre class="brush: python">
+for word in words:
+    ...
+        </pre>
+        <p>
+            Zgodnie z opisem, jeśli słowo zawiera cyfrę lub ma długość 1, nie jest liczone. Do tego sprawdzenia potrzebna jest metoda <a target="_blank" href="https://www.w3schools.com/python/ref_string_isalpha.asp">str.isalpha()</a>, funkcja <b class="code">len()</b> i instrukcja <b class="code">if</b>.
+        </p>
+        <pre class="brush: python">
+if len(word) == 1 or not word.isalpha():
+    continue
+        </pre>
+        <p>
+            Jeśli warunek zwróci <b class="code">True</b> - proszę pominąć <b class="code">word</b> z <b class="code">continue</b> i sprawdzić następny.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak rozdzielić znaki o nieparzystych i parzystych indeksach?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę użyć łańcucha <a target="_blank" href="https://www.w3schools.com/python/gloss_python_string_slice.asp">slicing</a> z krokiem 2 i odpowiednim indeksem początkowym. Proszę przekonwertować oba wyniki na <b class="code">set</b> i przypisać do różnych zmiennych. 
+        </p>
+        <pre class="brush: python">
+odd, even = set(word[::2]), set(word[1::2])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Tak łatwo rozdzielić! Ale nadal potrzebuję podpowiedzi.
+    </div>
+    <div class="answer">
+        <p>
+            To właściwie główna część. Proszę przeczytać o metodach <a target="_blank" href="https://www.w3schools.com/python/python_sets_methods.asp">sets</a>. W tym rozwiązaniu używamy <b class="code">issubset()</b> i <b class="code">isdisjoint()</b>, ale możliwe jest również użycie innych metod do rozwiązania misji. 
+        </p>
+        <p>
+            Należy określić dwa przypadki: sprawdzić, czy wszystkie znaki <b class="code">odd</b> są samogłoskami, a następnie wszystkie <b class="code">even</b> muszą być spółgłoskami (NIE samogłoskami). Drugi przypadek jest odwrotny.
+        </p>
+        <pre class="brush: python">
+case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak prawidłowo obsłużyć te przypadki?
+    </div>
+    <div class="answer">
+        <p>
+            To proste. Jeśli jeden lub drugi przypadek zwróci <b class="code">True</b>, oznacza to, że <b class="code">word</b> jest striped i należy inkrementować licznik <b class="code">res</b>.
+        </p>
+        <pre class="brush: python">
+if case1 or case2:
+    res += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy połączyć wszystkie poprzednie podpowiedzi, zwrócić <b class="code">res</b> i zawinąć kod w wyrażenie funkcyjne. Używanie podpowiedzi typu dla danych wejściowych i wyjściowych jest wysoce zalecane.
+        </p>
+        <p>Poniżej znajduje się całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(text: str) -> int:
+
+    VOWELS = set("aeiouy")
+    res = 0
+    words = re.split(r"[.,!?: ]", text.lower())
+    for word in words:
+        if len(word) == 1 or not word.isalpha():
+            continue
+        odd, even = set(word[::2]), set(word[1::2])
+        case1 = odd.issubset(VOWELS) and even.isdisjoint(VOWELS)
+        case2 = even.issubset(VOWELS) and odd.isdisjoint(VOWELS)
+        if case1 or case2:
+            res += 1
+            
+    return res
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwą 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę łapać!</p>
+        <p>
+            W tym rozwiązaniu znaki wszystkich grup są zastępowane jednym konkretnym znakiem w jednej iteracji. Po tym wystarczy sprawdzić, czy znaki z grup samogłosek i spółgłosek nie sąsiadują ze sobą (poza sprawdzeniem, które znają już Państwo z naszego rozwiązania).
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+VOWELS = "AEIOUY"
+PUNCTUATION = " ,.!?"
+DIGITS = "0123456789"
+
+def checkio(text: str) -> int:
+    
+    text1 = ""
+    for char in text.upper():
+        if char in PUNCTUATION: text1 += " "
+        elif char in VOWELS: text1 += "v"
+        elif char in DIGITS: text1 += char
+        else: text1 += "c"
+
+    count = sum(all((len(word)> 1,
+                     word.isalpha(),
+                     "cc" not in word,
+                     "vv" not in word))
+                for word in text1.split(" "))
+
+    return count
+        </pre>
+        </div>
+        <p>
+            Tutaj jest całkowite wykorzystanie modułu <b class="code">re</b>, a rozwiązanie jest dobrze wyjaśnione.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+VOWELS = "AEIOUY"
+CONSONANTS = "BCDFGHJKLMNPQRSTVWXZ"
+
+def checkio(text: str) -> int:
+
+    return len(re.findall(r'''(?ix)               (?#Case-insensitive, verbose)
+        \b(                                       (?#Surrounding word boundaries)
+            (?:(?: [{cons}] [{vow}] )+ [{cons}]?) (?#Word starting with consonant)
+            |                                     (?#Alternative templates)
+            (?:(?: [{vow}] [{cons}] )+ [{vow}]?)  (?#Word starting with vowel)
+        )\b
+        '''.format(vow=VOWELS, cons=CONSONANTS), text))
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>

@@ -1,0 +1,53 @@
+<p>
+    Nasze roboty nieustannie pracują nad doskonaleniem swoich umiejętności językowych.
+    W ramach tej misji badają alfabet łaciński i jego zastosowania.
+</p>
+
+<p>
+    Alfabet zawiera zarówno samogłoski, jak i spółgłoski (tak, dzielimy litery).<br>
+    Samogłoski -- <b>A E I O U Y</b><br>
+    Spółgłoski -- <b>B C D F G H J K L M N P Q R S T V W X Z</b>
+</p>
+
+<p style="text-align: justify;">
+    Otrzymują Państwo blok tekstu zawierający różne słowa. 
+    Słowa te są oddzielone białymi spacjami i znakami interpunkcyjnymi.
+    Liczby nie są uważane za słowa w tej misji (mieszanka liter i cyfr również nie jest słowem).
+    Należy policzyć liczbę słów (słów w paski), w których samogłoski i spółgłoski występują naprzemiennie; 
+    liczone słowa nie mogą mieć dwóch następujących po sobie samogłosek lub spółgłosek.
+    Słowa składające się z jednej litery nie są w paski - proszę ich nie liczyć. Wielkość liter nie ma znaczenia w tej misji.
+</p>
+
+<p>
+   <strong>Dane wejściowe:</strong> Tekst jako ciąg znaków <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Liczba rozebranych słów jako liczba całkowita <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+    
+</div>
+
+<p class="for_info_only">
+   <strong>Jak to jest używane:</strong>
+    Zadanie to jest przydatnym ćwiczeniem w badaniach i analizach lingwistycznych.
+    Przetwarzanie tekstu jest jednym z głównych narzędzi wykorzystywanych w analizie różnych książek i języków i może pomóc w tłumaczeniu tekstu drukowanego na format cyfrowy.
+</p>
+
+
+<p>
+    <strong>Warunki wstępne:</strong>
+    <ul>
+        <li>Tekst zawiera tylko symbole ASCII;</li>
+        <li>0 &lt; len(text) &lt;<sup>105</sup>.</li>
+    </ul>
+</p>
