@@ -1,0 +1,53 @@
+<p>
+    Nos robots travaillent sans cesse à l'amélioration de leurs compétences linguistiques.
+    Pour cette mission, ils effectuent des recherches sur l'alphabet latin et ses applications.
+</p>
+
+<p>
+    L'alphabet contient à la fois des voyelles et des consonnes (oui, nous divisons les lettres).<br>
+    Voyelles -- <b>A E I O U Y</b><br>
+    Consonnes -- <b>B C D F G H J K L M N P Q R S T V W X Z</b>
+</p>
+
+<p style="text-align: justify;">
+    Vous disposez d'un bloc de texte contenant différents mots. 
+    Ces mots sont séparés par des espaces blancs et des signes de ponctuation.
+    Les chiffres ne sont pas considérés comme des mots dans cette mission (un mélange de lettres et de chiffres n'est pas non plus un mot).
+    Vous devez compter le nombre de mots (mots rayés) où les voyelles et les consonnes alternent; 
+    les mots que vous comptez ne peuvent pas avoir deux voyelles ou consonnes consécutives.
+    Les mots composés d'une seule lettre ne sont pas rayés - ne les comptez pas. La casse n'est pas importante pour cette mission.
+</p>
+
+<p>
+   <strong>Entrée:</strong> Un texte sous forme de chaîne <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Sortie:</strong> Une quantité de mots rayés sous la forme d'un nombre entier <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Exemples:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+    
+</div>
+
+<p class="for_info_only">
+   <strong>Comment l'utiliser:</strong>
+    Cette tâche est un exercice utile pour la recherche et l'analyse linguistiques.
+    Le traitement de texte est l'un des principaux outils utilisés dans l'analyse de divers livres et langues et peut aider à traduire un texte imprimé en format numérique.
+</p>
+
+
+<p>
+    <strong>Conditions préalables:</strong>
+    <ul>
+        <li>Le texte ne contient que des symboles ASCII;</li>
+        <li>0 &lt; len(text) &lt;<sup>105</sup>.</li>
+    </ul>
+</p>
