@@ -1,0 +1,53 @@
+<p>
+    Unsere Roboter arbeiten ständig daran, ihre sprachlichen Fähigkeiten zu verbessern.
+    Für diese Mission erforschen sie das lateinische Alphabet und seine Anwendungen.
+</p>
+
+<p>
+    Das Alphabet enthält sowohl Vokal- als auch Konsonantenbuchstaben (ja, wir teilen die Buchstaben auf).<br>
+    Vokale -- <b>A E I O U Y</b><br>
+    Konsonanten -- <b>B C D F G H J K L M N P Q R S T V W X Z</b>
+</p>
+
+<p style="text-align: justify;">
+    Sie erhalten einen Textblock mit verschiedenen Wörtern. 
+    Diese Wörter werden durch Leerzeichen und Satzzeichen getrennt.
+    Zahlen werden in dieser Mission nicht als Wörter betrachtet (eine Mischung aus Buchstaben und Ziffern ist auch kein Wort).
+    Sie sollten die Anzahl der Wörter (gestreifte Wörter) zählen, bei denen sich Vokale und Konsonanten abwechseln; 
+    die Wörter, die Sie zählen, dürfen nicht zwei aufeinanderfolgende Vokale oder Konsonanten haben.
+    Die Wörter, die nur aus einem einzigen Buchstaben bestehen, sind nicht gestreift - zählen Sie diese nicht. Die Groß- und Kleinschreibung ist für diese Aufgabe nicht von Bedeutung.
+</p>
+
+<p>
+   <strong>Eingabe:</strong> Ein Text als Zeichenkette <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Eine Anzahl von gestreiften Wörtern als Ganzzahl <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+    
+</div>
+
+<p class="for_info_only">
+   <strong>Wie es verwendet wird:</strong>
+    Diese Aufgabe ist eine nützliche Übung für die linguistische Forschung und Analyse.
+    Die Textverarbeitung ist eines der wichtigsten Hilfsmittel bei der Analyse verschiedener Bücher und Sprachen und kann bei der Übersetzung von gedruckten Texten in ein digitales Format helfen.
+</p>
+
+
+<p>
+    <strong>Voraussetzungen:</strong>
+    <ul>
+        <li>Der Text enthält nur ASCII-Symbole;</li>
+        <li>0 &lt; len(Text) &lt;<sup>105</sup>.</li>
+    </ul>
+</p>
